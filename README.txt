@@ -1,7 +1,5 @@
 PROJETO: Sistema de Prontuario Eletronico em C
 
-Esta versao foi ajustada para atender aos seguintes requisitos:
-
 1) Divisao em 2 TADs principais:
    - TAD Paciente: paciente.h e paciente.c
    - TAD Consulta: consulta.h e consulta.c

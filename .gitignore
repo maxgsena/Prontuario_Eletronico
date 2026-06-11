@@ -1,0 +1,5 @@
+*.exe
+*.o
+prontuario
+pacientes.txt
+consultas.txt

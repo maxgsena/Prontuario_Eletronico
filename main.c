@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "paciente.h"
+#include "validacao.h"
 
 int main(void) {
     Paciente *lista;
@@ -7,10 +8,11 @@ int main(void) {
     int opcao;
     char cpf[15];
 
+
     lista = carregarDados();
 
     do {
-        printf("SISTEMA DE PRONTUARIO MEDICO\n");
+        printf("Prontuario Medico\n");
         printf("1. Cadastrar paciente\n");
         printf("2. Registrar consulta\n");
         printf("3. Listar pacientes\n");
@@ -19,8 +21,8 @@ int main(void) {
         printf("6. Excluir consulta\n");
         printf("7. Consultar quantitativo de atendimentos\n");
         printf("8. Sair\n");
-        printf("Opcao: ");
-        opcao = lerInteiro();
+
+        opcao = lerInteiroIntervalo("Opcao: ", 1, 8);
 
         switch (opcao) {
             case 1:
@@ -28,7 +30,7 @@ int main(void) {
                 break;
 
             case 2:
-                registrarConsulta(lista);
+                registrarConsultaPaciente(lista);
                 break;
 
             case 3:
@@ -36,8 +38,7 @@ int main(void) {
                 break;
 
             case 4:
-                printf("\nDigite o CPF do paciente: ");
-                lerTexto(cpf, 15);
+                lerTextoValidado("Digite o CPF do paciente: ", cpf, sizeof(cpf), TEXTO_CPF);
                 pacienteEncontrado = buscarPacientePorCPF(lista, cpf);
                 mostrarPaciente(pacienteEncontrado);
                 break;
@@ -47,7 +48,7 @@ int main(void) {
                 break;
 
             case 6:
-                excluirConsulta(lista);
+                excluirConsultaPaciente(lista);
                 break;
 
             case 7:
@@ -59,11 +60,7 @@ int main(void) {
                 lista = liberarListaPacientes(lista);
                 printf("Sistema encerrado. Dados salvos.\n");
                 break;
-
-            default:
-                printf("Opcao invalida. Tente novamente.\n");
         }
-
     } while (opcao != 8);
 
     return 0;

@@ -1,4 +1,7 @@
 PROJETO: Sistema de Prontuario Eletronico em C
+Disciplina: Algoritmos e Estruturas de Dados 1
+Docente: Rosana Cibely Batista Rego
+Discentes: Maximilyano Gois Sena, José Augusto de Souza Costa, Joao Vitor Ribeiro Pacó
 
 1) Divisao em 2 TADs principais:
    - TAD Paciente: paciente.h e paciente.c

@@ -11,6 +11,7 @@ int lerInteiroIntervalo(const char mensagem[], int minimo, int maximo);
 int lerTextoValidado(const char mensagem[], char texto[], int tamanho, int tipo);
 
 int somenteDigitos(const char texto[]);
+int cpfValido(const char cpf[]);
 int dataValida(const char data[]);
 int horaValida(const char hora[]);
 int dataNaoFutura(const char data[]);

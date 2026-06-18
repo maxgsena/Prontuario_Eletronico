@@ -67,7 +67,7 @@ Paciente* cadastrarPaciente(Paciente *lista) {
 
     novo->numeroProntuario = proximoNumeroProntuario(lista);
 
-    printf("\n--- CADASTRO DE PACIENTE ---\n");
+    printf("\nCadastro de Paciente\n");
     lerTextoValidado("Nome completo: ", novo->nome, sizeof(novo->nome), TEXTO_NOME);
 
     do {
@@ -115,7 +115,7 @@ void listarPacientes(Paciente *lista) {
         return;
     }
 
-    printf("\n--- LISTA DE PACIENTES ---\n");
+    printf("\nLista de Pacientes\n");
 
     while (lista != NULL) {
         printf("\nProntuario: %d\n", lista->numeroProntuario);

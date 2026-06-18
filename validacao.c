@@ -267,6 +267,72 @@ int lerInteiroIntervalo(const char mensagem[], int minimo, int maximo) {
     return valor;
 }
 
+int cpfValido(const char cpf[]) {
+    int i;
+    int soma;
+    int resto;
+    int d10;
+    int d11;
+    int todosIguais = 1;
+
+    if (strlen(cpf) != 11) {
+        return 0;
+    }
+
+    if (!somenteDigitos(cpf)) {
+        return 0;
+    }
+
+    for (i = 1; i < 11; i++) {
+        if (cpf[i] != cpf[0]) {
+            todosIguais = 0;
+            break;
+        }
+    }
+
+    if (todosIguais) {
+        return 0;
+    }
+
+    soma = 0;
+
+    for (i = 0; i < 9; i++) {
+        soma += (cpf[i] - '0') * (10 - i);
+    }
+
+    resto = soma % 11;
+
+    if (resto == 0 || resto == 1) {
+        d10 = 0;
+    } else {
+        d10 = 11 - resto;
+    }
+
+    if (d10 != cpf[9] - '0') {
+        return 0;
+    }
+
+    soma = 0;
+
+    for (i = 1; i < 10; i++) {
+        soma += (cpf[i] - '0') * (11 - i);
+    }
+
+    resto = soma % 11;
+
+    if (resto == 0 || resto == 1) {
+        d11 = 0;
+    } else {
+        d11 = 11 - resto;
+    }
+
+    if (d11 != cpf[10] - '0') {
+        return 0;
+    }
+
+    return 1;
+}
+
 int lerTextoValidado(const char mensagem[], char texto[], int tamanho, int tipo) {
     char entrada[500];
     int valido;
@@ -316,8 +382,8 @@ int lerTextoValidado(const char mensagem[], char texto[], int tamanho, int tipo)
                 break;
 
             case TEXTO_CPF:
-                if (!somenteDigitos(entrada) || strlen(entrada) != 11) {
-                    printf("CPF invalido. Digite exatamente 11 numeros.\n");
+                if (!cpfValido(entrada)) {
+                    printf("CPF invalido. Digite um CPF real com 11 numeros.\n");
                     valido = 0;
                 }
                 break;
